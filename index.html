@@ -92,9 +92,8 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
 .cover-logos .sep{width:1px;height:40px;background:var(--border)}
 
 /* ── PROBLEM / SOLUTION CARDS ── */
-.card-list{display:flex;flex-direction:column;gap:0}
-.card-item{display:grid;grid-template-columns:48px 1fr;gap:24px;align-items:start;padding:24px 0;border-top:1px solid var(--border-soft)}
-.card-item:last-child{border-bottom:1px solid var(--border-soft)}
+.card-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border-soft)}
+.card-item{display:grid;grid-template-columns:48px 1fr;gap:24px;align-items:start;padding:24px 0;border-bottom:1px solid var(--border-soft)}
 .card-n{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.06em;padding-top:2px;transition:color .5s ease}
 .card-title{font-family:var(--sans);font-size:18px;font-weight:500;color:var(--fg);line-height:1.35;margin-bottom:4px}
 .card-body{font-family:var(--sans);font-size:14px;color:var(--fg-muted);line-height:1.55}
@@ -103,6 +102,9 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
 .pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:0;align-items:start}
 .pillar{background:var(--bg-2);border:1px solid var(--border);padding:28px 24px;display:flex;flex-direction:column;gap:12px;border-radius:2px;transition:border-color .5s ease}
 .pillar:hover{border-color:var(--accent)}
+/* ── STEP ANIMATION ── */
+[data-step] .step-item{opacity:.2;filter:saturate(.15);transition:opacity .45s ease,filter .45s ease,border-color .45s ease}
+[data-step] .step-item.focused{opacity:1;filter:saturate(1);border-color:var(--accent)}
 .pillar-num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.14em;transition:color .5s ease}
 .pillar-title{font-family:var(--serif);font-size:clamp(20px,2vw,26px);font-weight:300;line-height:1.2;color:var(--fg)}
 .pillar-title em{font-style:italic;color:var(--accent);transition:color .5s ease}
@@ -147,8 +149,8 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
 
 /* ── INSIGHT LIST ── */
 .insight-list{display:flex;flex-direction:column;gap:0;margin-top:8px}
-.insight-item{display:flex;gap:20px;align-items:baseline;padding:18px 0;border-top:1px solid var(--border-soft)}
-.insight-item:last-child{border-bottom:1px solid var(--border-soft)}
+.insight-list{border-top:1px solid var(--border-soft)}
+.insight-item{display:flex;gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--border-soft)}
 .insight-icon{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.1em;min-width:24px;transition:color .5s ease}
 .insight-text{font-family:var(--sans);font-size:17px;color:var(--fg-muted);line-height:1.5}
 .insight-text strong{color:var(--fg);font-weight:500}
@@ -201,21 +203,21 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
     </section>
 
         <!-- 2 · Focus Areas -->
-    <section class="slide" data-chapter="0">
+    <section class="slide" data-chapter="0" data-step="true">
       <div class="anim anim-1 eyebrow" style="margin-bottom:32px">Focus Areas</div>
       <div class="anim anim-2 display-md" style="margin-bottom:28px;max-width:22ch">Three pillars of <em>AI optimization.</em></div>
-      <div class="anim anim-3 pillar-grid">
-        <div class="pillar">
+      <div class="pillar-grid">
+        <div class="pillar step-item">
           <div class="pillar-num">01</div>
           <div class="pillar-title">AI-Optimized <em>UI/UX Design</em></div>
           <div class="pillar-body">Interfaces rebuilt from the ground up for AI-native workflows — not retrofitted onto legacy patterns.</div>
         </div>
-        <div class="pillar">
+        <div class="pillar step-item">
           <div class="pillar-num">02</div>
           <div class="pillar-title">Prompt & Context <em>Engineering</em></div>
           <div class="pillar-body">Deep integration of Prompt Engineering, Context Engineering, and RAG (Retrieval-Augmented Generation) to maximize model accuracy.</div>
         </div>
-        <div class="pillar">
+        <div class="pillar step-item">
           <div class="pillar-num">03</div>
           <div class="pillar-title">Business Process <em>Automation</em></div>
           <div class="pillar-body">Replacing manual, repetitive compliance and classification tasks with automated pipelines that reduce errors and save hours daily.</div>
@@ -224,19 +226,19 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
     </section>
 
     <!-- 3 · UX Insights -->
-    <section class="slide" data-chapter="0">
+    <section class="slide" data-chapter="0" data-step="true">
       <div class="anim anim-1 eyebrow" style="margin-bottom:32px">UI/UX Insights</div>
       <div class="anim anim-2 display-md" style="margin-bottom:36px;max-width:24ch">From legacy UI to <em>AI-native design.</em></div>
-      <div class="anim anim-3 insight-list">
-        <div class="insight-item">
+      <div class="insight-list">
+        <div class="insight-item step-item">
           <span class="insight-icon">01</span>
           <div class="insight-text"><strong>Old UI → AI-optimized design.</strong> Legacy interfaces weren't built for AI output — we redesigned the entire interaction model.</div>
         </div>
-        <div class="insight-item">
+        <div class="insight-item step-item">
           <span class="insight-icon">02</span>
           <div class="insight-text"><strong>AI agents are multiplying.</strong> Diverse AI services powered by agents are emerging — the interface must expose their power clearly.</div>
         </div>
-        <div class="insight-item">
+        <div class="insight-item step-item">
           <span class="insight-icon">03</span>
           <div class="insight-text"><strong>Management layer matters.</strong> We build tools that go beyond bare LLM — connected to management workflows for end-to-end control.</div>
         </div>
@@ -258,19 +260,19 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
     </section>
 
     <!-- 5 · Problem -->
-    <section class="slide" data-chapter="1">
+    <section class="slide" data-chapter="1" data-step="true">
       <div class="anim anim-1 eyebrow" style="margin-bottom:32px">Problem</div>
       <div class="anim anim-2 display-md" style="margin-bottom:36px;max-width:20ch">Manual compliance <em>breaks at scale.</em></div>
-      <div class="anim anim-3 card-list">
-        <div class="card-item">
+      <div class="card-list">
+        <div class="card-item step-item">
           <span class="card-n">01</span>
           <div><div class="card-title">Regulations keep changing</div><div class="card-body">FDA rules evolve continuously — teams spend hours tracking updates and manually updating internal processes.</div></div>
         </div>
-        <div class="card-item">
+        <div class="card-item step-item">
           <span class="card-n">02</span>
           <div><div class="card-title">Fully manual workload</div><div class="card-body">Every label, every ingredient check, every form — done by hand. Slow, error-prone, and impossible to scale.</div></div>
         </div>
-        <div class="card-item">
+        <div class="card-item step-item">
           <span class="card-n">03</span>
           <div><div class="card-title">Expertise locked in memory</div><div class="card-body">Critical compliance knowledge lives in individual employees' heads. One departure can cripple an entire operation.</div></div>
         </div>
@@ -278,19 +280,19 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
     </section>
 
     <!-- 6 · Solution -->
-    <section class="slide" data-chapter="1">
+    <section class="slide" data-chapter="1" data-step="true">
       <div class="anim anim-1 eyebrow" style="margin-bottom:32px">Solution</div>
       <div class="anim anim-2 display-md" style="margin-bottom:36px;max-width:22ch">Three systems that <em>automate the work.</em></div>
-      <div class="anim anim-3 card-list">
-        <div class="card-item">
+      <div class="card-list">
+        <div class="card-item step-item">
           <span class="card-n">01</span>
           <div><div class="card-title">Label Template Creation</div><div class="card-body">Upload documents → AI analysis → Label data extraction → Rendering → Review & edit → Save & PDF download. AI validates every field.</div></div>
         </div>
-        <div class="card-item">
+        <div class="card-item step-item">
           <span class="card-n">02</span>
           <div><div class="card-title">Ingredient Tracking System</div><div class="card-body">Select saved label → Auto-parse ingredients → Allergen auto-detection → Inline cell editing → Save. Zero manual lookup.</div></div>
         </div>
-        <div class="card-item">
+        <div class="card-item step-item">
           <span class="card-n">03</span>
           <div><div class="card-title">AI Document Generation</div><div class="card-body">Upload → AI analysis → Save validation results → Select document type → AI auto pre-fill → Review → Save PDF. Forms write themselves.</div></div>
         </div>
@@ -305,7 +307,7 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
         <div>
           <div style="font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;transition:color .5s ease">01 · Label Template</div>
           <div class="workflow">
-            <div class="wf-step"><div class="wf-box start">Upload Docs</div><div class="wf-arr">→</div></div>
+            <div class="wf-step"><div class="wf-box">Upload Docs</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">AI Analysis</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">Data Extraction</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">Label Rendering</div><div class="wf-arr">→</div></div>
@@ -316,7 +318,7 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
         <div>
           <div style="font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;transition:color .5s ease">02 · Ingredient Tracking</div>
           <div class="workflow">
-            <div class="wf-step"><div class="wf-box start">Select Label</div><div class="wf-arr">→</div></div>
+            <div class="wf-step"><div class="wf-box">Select Label</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">Auto-Parse</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">Allergen Detection</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">Inline Editing</div><div class="wf-arr">→</div></div>
@@ -326,7 +328,7 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
         <div>
           <div style="font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;transition:color .5s ease">03 · Document Generation</div>
           <div class="workflow">
-            <div class="wf-step"><div class="wf-box start">Upload Docs</div><div class="wf-arr">→</div></div>
+            <div class="wf-step"><div class="wf-box">Upload Docs</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">AI Analysis</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">Save Results</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">Select Type</div><div class="wf-arr">→</div></div>
@@ -365,19 +367,19 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
     </section>
 
     <!-- 10 · Problem -->
-    <section class="slide" data-chapter="2">
+    <section class="slide" data-chapter="2" data-step="true">
       <div class="anim anim-1 eyebrow" style="margin-bottom:32px">Problem</div>
       <div class="anim anim-2 display-md" style="margin-bottom:36px;max-width:20ch">Manual customs work <em>at breaking point.</em></div>
-      <div class="anim anim-3 card-list">
-        <div class="card-item">
+      <div class="card-list">
+        <div class="card-item step-item">
           <span class="card-n">01</span>
           <div><div class="card-title">Tariffs change constantly</div><div class="card-body">HTS codes and tariff rates update frequently — misclassification means penalties, delays, and cost overruns.</div></div>
         </div>
-        <div class="card-item">
+        <div class="card-item step-item">
           <span class="card-n">02</span>
           <div><div class="card-title">Humans reading every document</div><div class="card-body">Brokers manually parse commercial invoices, packing lists, and BOLs to extract data — hours of repetitive reading.</div></div>
         </div>
-        <div class="card-item">
+        <div class="card-item step-item">
           <span class="card-n">03</span>
           <div><div class="card-title">Manual form typing wastes time</div><div class="card-body">Every customs entry is typed by hand — re-keying data that already exists in source documents. Pure time waste.</div></div>
         </div>
@@ -385,25 +387,25 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
     </section>
 
     <!-- 11 · Solution -->
-    <section class="slide" data-chapter="2">
+    <section class="slide" data-chapter="2" data-step="true">
       <div class="anim anim-1 eyebrow" style="margin-bottom:32px">Solution</div>
       <div class="anim anim-2 display-md" style="margin-bottom:36px;max-width:22ch">Three systems that <em>eliminate the manual.</em></div>
-      <div class="anim anim-3 card-list">
-        <div class="card-item">
+      <div class="card-list">
+        <div class="card-item step-item">
           <span class="card-n">01</span>
           <div>
             <div class="card-title">Tariff Classification with Inline Visualization</div>
             <div class="card-body">AI-assisted HTS classification against USITC database — results visualized inline with confidence levels for instant review and validation.</div>
           </div>
         </div>
-        <div class="card-item">
+        <div class="card-item step-item">
           <span class="card-n">02</span>
           <div>
             <div class="card-title">AI Data Extraction from Import Documents</div>
             <div class="card-body">Upload any import document → AI extracts all relevant fields → validate and save as structured table. No manual reading.</div>
           </div>
         </div>
-        <div class="card-item">
+        <div class="card-item step-item">
           <span class="card-n">03</span>
           <div>
             <div class="card-title">Robotic Process Automation</div>
@@ -465,7 +467,7 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
         <div>
           <div style="font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;transition:color .5s ease">01 · Tariff Classification</div>
           <div class="workflow">
-            <div class="wf-step"><div class="wf-box start">Inquiry</div><div class="wf-arr">→</div></div>
+            <div class="wf-step"><div class="wf-box">Inquiry</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">USITC Search</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">AI HTS Class.</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">Visualization</div><div class="wf-arr">→</div></div>
@@ -476,7 +478,7 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
         <div>
           <div style="font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;transition:color .5s ease">02 · Data Extraction</div>
           <div class="workflow">
-            <div class="wf-step"><div class="wf-box start">Doc Upload</div><div class="wf-arr">→</div></div>
+            <div class="wf-step"><div class="wf-box">Doc Upload</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">AI Extraction</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">Data Validation</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">Save as Table</div></div>
@@ -485,7 +487,7 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
         <div>
           <div style="font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;transition:color .5s ease">03 · Document Automation (RPA)</div>
           <div class="workflow">
-            <div class="wf-step"><div class="wf-box start">Data Validation</div><div class="wf-arr">→</div></div>
+            <div class="wf-step"><div class="wf-box">Data Validation</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">Start Filing</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">AWS VM</div><div class="wf-arr">→</div></div>
             <div class="wf-step"><div class="wf-box">RPA Execution</div><div class="wf-arr">→</div></div>
@@ -604,6 +606,7 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
     setAccent(chap);
     navItems.forEach(n=>n.classList.toggle('active',n.dataset.chapter===chap));
     if(slides[idx].id==='recapSlide') renderRecap();
+    document.querySelectorAll('.step-item.focused').forEach(el=>el.classList.remove('focused'));
   }
 
   function go(n,opts){
@@ -620,10 +623,26 @@ html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);height:10
     if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){
       e.preventDefault();
       if(isOnRecap()&&recapStep<recapCards().length-1){recapStep++;renderRecap();return;}
+      if(slides[idx].dataset.step){
+        const items=Array.from(slides[idx].querySelectorAll('.step-item'));
+        const cur=items.findIndex(el=>el.classList.contains('focused'));
+        if(cur<items.length-1){
+          if(cur>=0) items[cur].classList.remove('focused');
+          items[cur+1].classList.add('focused');
+          return;
+        }
+        items.forEach(el=>el.classList.remove('focused'));
+      }
       go(idx+1);
     } else if(e.key==='ArrowLeft'||e.key==='PageUp'){
       e.preventDefault();
       if(isOnRecap()&&recapStep>0){recapStep--;renderRecap();return;}
+      if(slides[idx].dataset.step){
+        const items=Array.from(slides[idx].querySelectorAll('.step-item'));
+        const cur=items.findIndex(el=>el.classList.contains('focused'));
+        if(cur>0){ items[cur].classList.remove('focused'); items[cur-1].classList.add('focused'); return; }
+        if(cur===0){ items[cur].classList.remove('focused'); }
+      }
       go(idx-1,{fromBack:true});
     } else if(e.key==='Home') go(0);
     else if(e.key==='End') go(total-1);
